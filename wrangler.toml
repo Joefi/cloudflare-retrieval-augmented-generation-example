@@ -15,8 +15,8 @@ fallthrough = true
 
 [[d1_databases]]
 binding = "DATABASE"
-database_name = "ai-example"
-database_id = "2a210384-148b-4c31-bbad-c2873f649f9c"
+database_name = "rag-notes"
+database_id = "be7f23a9-3f53-4fc5-8e0e-41a5341824ba"
 
 [[vectorize]]
 binding = "VECTOR_INDEX"
