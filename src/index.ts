@@ -160,11 +160,16 @@ export class RAGWorkflow extends WorkflowEntrypoint<Env, Params> {
 		for (const index in texts) {
 			const text = texts[index]
 			const record = await step.do(`create database record: ${index}/${texts.length}`, async () => {
-				const query = "INSERT INTO notes (text) VALUES (?) RETURNING *"
-
+				const id = `${event.instanceId}:${index}`;
+				const query = `
+				  INSERT INTO notes (id, text) VALUES (?, ?)
+				  ON CONFLICT(id) DO UPDATE SET text = excluded.text
+				  RETURNING *
+				`;
+				
 				const { results } = await env.DATABASE.prepare(query)
-					.bind(text)
-					.run<Note>()
+				  .bind(id, text)
+				  .run<Note>();
 
 				const record = results[0]
 				if (!record) throw new Error("Failed to create note")
