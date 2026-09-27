@@ -20,7 +20,7 @@ database_id = "2a210384-148b-4c31-bbad-c2873f649f9c"
 
 [[vectorize]]
 binding = "VECTOR_INDEX"
-index_name = "tutorial-index-768"
+index_name = "rag-notes-index"
 
 [[workflows]]
 name = "rag"
