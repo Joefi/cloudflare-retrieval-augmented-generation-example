@@ -114,7 +114,7 @@ app.get('/', async (c) => {
 			response: (message.content as TextBlock[]).map(content => content.text).join("\n")
 		}
 	} else {
-		const model = "@cf/meta/llama-3.1-8b-instruct"
+		const model = "@cf/meta/llama-3.1-8b-instruct-fp8"
 		modelUsed = model
 
 		response = await c.env.AI.run(
